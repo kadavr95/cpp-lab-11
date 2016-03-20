@@ -5,8 +5,8 @@
 int AccuracyInput(float *);
 int IntegrateFunction(float, float *, float);
 int WeddleRule();
-int RowOutput(float, float);
-int FunctionValue(float, float*);
+void RowOutput(float, float);
+float FunctionValue(float);
 
 const DataPoints=4;
 
@@ -47,16 +47,19 @@ int IntegrateFunction(float Counter, float *Result, float Accuracy)
 
 int WeedleRule()
 {
-	Result=3*(b-a)/n/6/10*(f(x1)+5*f(x2)+f(x3)+6*f(x4)+f(x5)+5*f(x6)+f(x7));
+	float LowerLimit, UpperLimit, z, SubsegmentLength;
+	SubsegmentLength=(UpperLimit-LowerLimit)/SegmentsQuantity;
+	ElementarySegmentLength=Subsegment/6;
+	Result=3*ElementarySegmentLength/10*(FunctionValue(LowerLimit)+5*FunctionValue(LowerLimit+ElementarySegmentLength)+FunctionValue(LowerLimit+2*ElementarySegmentLength)+6*FunctionValue(LowerLimit+3*ElementarySegmentLength)+f(LowerLimit+4*ElementarySegmentLength)+5*FunctionValue(LowerLimit+5*ElementarySegmentLength)+FunctionValue(LowerLimit+6*ElementarySegmentLength));
 	cout<<"azaza";
 }
 
-int FunctionValue(float x, float *Result)
+float FunctionValue(float x)
 {
-	*Result=cos(pi*x*x/2);
+	return cos(pi*x*x/2);
 }
 
-int RowOutput(float Counter, float Result)
+void RowOutput(float Counter, float Result)
 {
 	cout<<"mde";
 }
