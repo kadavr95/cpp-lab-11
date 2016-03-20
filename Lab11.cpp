@@ -19,7 +19,7 @@ void main()
 	cout<<"\n------------------------------------------------------------------------------------------------------------------------";
 	cout<<" Lower Limit |"<<" Upper Limit |"<<" Result \n";
 	cout<<"------------------------------------------------------------------------------------------------------------------------";
-	for (Counter = 30.0; Counter <= 30.0; Counter+=0.5)
+	for (Counter = 0.5; Counter <= 2.0; Counter+=0.5)
 	{
 		IntegrateFunction(Counter, &Result, Accuracy);
 		RowOutput(Counter, Result, ArrayTableResults);
@@ -59,17 +59,8 @@ int WeddleRule(long double *Result, long double SegmentCounter, long double Lowe
 
 		LowerLimit=LowerLimitGlobal+(Counter-1)*(UpperLimitGlobal-LowerLimitGlobal)/SegmentCounter;
 		UpperLimit=LowerLimitGlobal+(Counter)*(UpperLimitGlobal-LowerLimitGlobal)/SegmentCounter;
-		//SubsegmentLength=(UpperLimit-LowerLimit)/SegmentCounter;
 		SubsegmentLength=(UpperLimit-LowerLimit);
 		ElementarySegmentLength=SubsegmentLength/6;
-		cout<<FunctionValue(LowerLimit)<<"\n";
-		cout<<FunctionValue(LowerLimit+ElementarySegmentLength)<<"\n";
-		cout<<FunctionValue(LowerLimit+2*ElementarySegmentLength)<<"\n";
-		cout<<FunctionValue(LowerLimit+3*ElementarySegmentLength)<<"\n";
-		cout<<FunctionValue(LowerLimit+4*ElementarySegmentLength)<<"\n";
-		cout<<FunctionValue(LowerLimit+5*ElementarySegmentLength)<<"\n";
-		cout<<FunctionValue(LowerLimit+6*ElementarySegmentLength)<<"\n";
-		cout<<"\n";
 		*Result+=3*ElementarySegmentLength/10*(FunctionValue(LowerLimit)+5*FunctionValue(LowerLimit+ElementarySegmentLength)+FunctionValue(LowerLimit+2*ElementarySegmentLength)+6*FunctionValue(LowerLimit+3*ElementarySegmentLength)+FunctionValue(LowerLimit+4*ElementarySegmentLength)+5*FunctionValue(LowerLimit+5*ElementarySegmentLength)+FunctionValue(LowerLimit+6*ElementarySegmentLength));
 	}
 }
@@ -81,8 +72,8 @@ long double FunctionValue(long double x)
 
 void RowOutput(long double Counter, long double Result, long double *ArrayTableResults)
 {
-	//cout<<fixed<<setprecision(1)<<"     "<<0.0<<"     |     "<<Counter<<"     | "<<setprecision(15)<<Result<<" \n"<<"               Table Result: "<<ArrayTableResults[int(Counter*2-1)]<<"\n";
-	cout<<fixed<<setprecision(1)<<"     "<<0.0<<"     |     "<<Counter<<"     | "<<setprecision(15)<<Result<<" \n";
+	cout<<fixed<<setprecision(1)<<"     "<<0.0<<"     |     "<<Counter<<"     | "<<setprecision(15)<<Result<<" \n"<<"               Table Result: "<<ArrayTableResults[int(Counter*2-1)]<<"\n";
+	//cout<<fixed<<setprecision(1)<<"     "<<0.0<<"     |     "<<Counter<<"     | "<<setprecision(15)<<Result<<" \n";
 	cout<<"------------------------------------------------------------------------------------------------------------------------";
 
 }
