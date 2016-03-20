@@ -4,7 +4,7 @@
 
 int AccuracyInput(float *);
 int IntegrateFunction(float, float *, float);
-int WeddleRule();
+int WeddleRule(float *,float);
 void RowOutput(float, float);
 float FunctionValue(float);
 
@@ -34,9 +34,11 @@ int AccuracyInput(float *Accuracy)
 int IntegrateFunction(float Counter, float *Result, float Accuracy)
 {
 	float PreviousResult;
+	int SegmentCounter=1;
 	*Result=1;
 	do
 	{
+		SegmentCounter++;
 		PreviousResult=*Result;
 		*Result/=10;
 		cout<<fabs(*Result-PreviousResult);
@@ -45,12 +47,12 @@ int IntegrateFunction(float Counter, float *Result, float Accuracy)
 	cout<<"kek";
 }
 
-int WeedleRule()
+int WeedleRule(float *Result, float SegmentCounter, float LowerLimitNumber, float UpperLimitNumber)
 {
-	float LowerLimit, UpperLimit, z, SubsegmentLength;
+	float LowerLimit, UpperLimit, ElementarySegmentLength, SubsegmentLength;
 	SubsegmentLength=(UpperLimit-LowerLimit)/SegmentsQuantity;
 	ElementarySegmentLength=Subsegment/6;
-	Result=3*ElementarySegmentLength/10*(FunctionValue(LowerLimit)+5*FunctionValue(LowerLimit+ElementarySegmentLength)+FunctionValue(LowerLimit+2*ElementarySegmentLength)+6*FunctionValue(LowerLimit+3*ElementarySegmentLength)+f(LowerLimit+4*ElementarySegmentLength)+5*FunctionValue(LowerLimit+5*ElementarySegmentLength)+FunctionValue(LowerLimit+6*ElementarySegmentLength));
+	*Result=3*ElementarySegmentLength/10*(FunctionValue(LowerLimit)+5*FunctionValue(LowerLimit+ElementarySegmentLength)+FunctionValue(LowerLimit+2*ElementarySegmentLength)+6*FunctionValue(LowerLimit+3*ElementarySegmentLength)+f(LowerLimit+4*ElementarySegmentLength)+5*FunctionValue(LowerLimit+5*ElementarySegmentLength)+FunctionValue(LowerLimit+6*ElementarySegmentLength));
 	cout<<"azaza";
 }
 
