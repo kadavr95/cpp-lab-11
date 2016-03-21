@@ -3,9 +3,9 @@
 #include <math.h>//absolute for float type, PI
 #include <iomanip.h> //output precision
 
-int AccuracyInput(long double *);//input of calculation accuracy
-int IntegrateFunction(long double, long double *, long double);//calculating integral of function
-int WeddleRule(long double *,long double, long double, long double);//calculate integral with current partition
+void AccuracyInput(long double *);//input of calculation accuracy
+void IntegrateFunction(long double, long double *, long double);//calculating integral of function
+void WeddleRule(long double *,long double, long double, long double);//calculate integral with current partition
 void RowOutput(long double, long double, long double *);//output of results
 long double FunctionValue(long double);//calculate result of function in a point
 
@@ -27,13 +27,13 @@ void main()//main function
 	getch();//waiting for user action
 }
 
-int AccuracyInput(long double *Accuracy)//input of calculation accuracy
+void AccuracyInput(long double *Accuracy)//input of calculation accuracy
 {
 	cout<<"Enter accuracy: ";
 	cin>>*Accuracy;
 }
 
-int IntegrateFunction(long double Counter, long double *Result, long double Accuracy)//calculating integral of function
+void IntegrateFunction(long double Counter, long double *Result, long double Accuracy)//calculating integral of function
 {
 	long double PreviousResult, LowerLimit, UpperLimit;
 	int SegmentCounter=1;
@@ -50,7 +50,7 @@ int IntegrateFunction(long double Counter, long double *Result, long double Accu
 	while(fabs(*Result-PreviousResult)>Accuracy);//repeat while difference between last two results is bigger than given accuracy
 }
 
-int WeddleRule(long double *Result, long double SegmentCounter, long double LowerLimitGlobal, long double UpperLimitGlobal)//calculate integral with current partition
+void WeddleRule(long double *Result, long double SegmentCounter, long double LowerLimitGlobal, long double UpperLimitGlobal)//calculate integral with current partition
 {
 	long double LowerLimit, UpperLimit, ElementarySegmentLength, SubsegmentLength, SegmentsQuantity;
 	int Counter;
