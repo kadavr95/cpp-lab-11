@@ -1,15 +1,15 @@
-#include <iostream.h>
-#include <conio.h>
-#include <math.h>
-#include <iomanip.h>
+#include <iostream.h>//cin, cout
+#include <conio.h>//getch
+#include <math.h>//absolute for float type, PI
+#include <iomanip.h> //output precision
 
-int AccuracyInput(long double *);
-int IntegrateFunction(long double, long double *, long double);
-int WeddleRule(long double *,long double, long double, long double);
-void RowOutput(long double, long double, long double *);
-long double FunctionValue(long double);
+int AccuracyInput(long double *);//input of calculation accuracy
+int IntegrateFunction(long double, long double *, long double);//calculating integral of function
+int WeddleRule(long double *,long double, long double, long double);//calculate integral with current partition
+void RowOutput(long double, long double, long double *);//output of results
+long double FunctionValue(long double);//calculate result of function in a point
 
-const DataPoints=4;
+const DataPoints=4;//
 
 void main()
 {
@@ -56,7 +56,6 @@ int WeddleRule(long double *Result, long double SegmentCounter, long double Lowe
 	int Counter;
 	for (Counter = 1; Counter <= SegmentCounter; Counter++)
 	{
-
 		LowerLimit=LowerLimitGlobal+(Counter-1)*(UpperLimitGlobal-LowerLimitGlobal)/SegmentCounter;
 		UpperLimit=LowerLimitGlobal+(Counter)*(UpperLimitGlobal-LowerLimitGlobal)/SegmentCounter;
 		SubsegmentLength=(UpperLimit-LowerLimit);
@@ -73,7 +72,6 @@ long double FunctionValue(long double x)
 void RowOutput(long double Counter, long double Result, long double *ArrayTableResults)
 {
 	cout<<fixed<<setprecision(1)<<"     "<<0.0<<"     |     "<<Counter<<"     | "<<setprecision(15)<<Result<<" \n"<<"               Table Result: "<<ArrayTableResults[int(Counter*2-1)]<<"\n";
-	//cout<<fixed<<setprecision(1)<<"     "<<0.0<<"     |     "<<Counter<<"     | "<<setprecision(15)<<Result<<" \n";
 	cout<<"------------------------------------------------------------------------------------------------------------------------";
 
 }
