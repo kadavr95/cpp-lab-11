@@ -4,16 +4,17 @@
 #include <iomanip.h> //output precision
 
 void AccuracyInput(long double *);//input of calculation accuracy
-void IntegrateFunction(long double, long double *, long double);//calculating integral of function
+void IntegrateFunction(float, long double *, long double);//calculating integral of function
 void WeddleRule(long double *,long double, long double, long double);//calculate integral with current partition
-void RowOutput(long double, long double, long double *);//output of results
+void RowOutput(float, long double, long double *);//output of results
 long double FunctionValue(long double);//calculate result of function in a point
 
 const DataPoints=4;//quantity of points to calculate integral
 
 void main()//main function
 {
-	long double Counter, Result=0, Accuracy;
+	float Counter;
+	long double Result=0, Accuracy;
 	long double ArrayTableResults[DataPoints]={0.4923442258714464,0.7798934003768228,0.4452611760398215,0.4882534060753408};//known results of integral values in our points
 	AccuracyInput(&Accuracy);//enter accuracy of calculation
 	cout<<"\n------------------------------------------------------------------------------------------------------------------------";//header of table
@@ -33,7 +34,7 @@ void AccuracyInput(long double *Accuracy)//input of calculation accuracy
 	cin>>*Accuracy;
 }
 
-void IntegrateFunction(long double Counter, long double *Result, long double Accuracy)//calculating integral of function
+void IntegrateFunction(float Counter, long double *Result, long double Accuracy)//calculating integral of function
 {
 	long double PreviousResult, LowerLimit, UpperLimit;
 	int SegmentCounter=1;
@@ -72,7 +73,7 @@ long double FunctionValue(long double x)//calculate result of function in a poin
 	return cos(M_PI*x*x/2);
 }
 
-void RowOutput(long double Counter, long double Result, long double *ArrayTableResults)//output of results
+void RowOutput(float Counter, long double Result, long double *ArrayTableResults)//output of results
 {
 	cout<<fixed<<setprecision(1)<<"     "<<0.0<<"     |     "<<Counter<<"     | "<<setprecision(15)<<Result<<" \n"<<"               Table Result: "<<ArrayTableResults[int(Counter*2-1)]<<"\n"; //output of limits, result and table result
 	cout<<"------------------------------------------------------------------------------------------------------------------------";
